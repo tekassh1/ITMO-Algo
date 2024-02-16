@@ -6,7 +6,6 @@
 using namespace std;
 
 typedef pair<int, char> node;
-typedef pair<int, int> trap;
 
 bool is_uppercase(char symb) { return (symb >= 'A' && symb <= 'Z'); }
 
@@ -37,11 +36,10 @@ int main() {
             (curr_symb == tolower(stack.top().second) || curr_symb == toupper(stack.top().second))) {
         
             node curr_trap = is_upper ? curr_node : stack.top();
-            trap t;
-            t.first = curr_trap.first;
-            t.second = is_upper ? stack.top().first : curr_node.first;
+            int trap_idx = curr_trap.first;
+            int animal_catched_idx = is_upper ? stack.top().first : curr_node.first;
 
-            catched[t.first - 1] = t.second; 
+            catched[trap_idx - 1] = animal_catched_idx;
             stack.pop();
         }
         else {
