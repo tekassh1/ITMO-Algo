@@ -39,9 +39,7 @@ int main() {
 
         if (i != 0) {
             double angle_rad = atan2(y - vec[0].y_coord, x - vec[0].x_coord);
-            // double angle_deg = angle_rad * 180 / M_PI;
-            // angle_deg += (angle_deg < 0) ? 360 : 0;
-
+            
             p.dist = sqrt(pow(x - vec[0].x_coord, 2) + pow(y - vec[0].y_coord, 2));
             p.angle = angle_rad;
         }
@@ -53,19 +51,20 @@ int main() {
     int max_gap_idx_s = 1;
 
     for (int i = 1; i < vec.size(); i++) {
-        double gap = abs(vec[i].angle - vec[i - 1].angle);
-        if (gap > M_PI) {
+        double gap = vec[i].angle - vec[i - 1].angle;
+        if (gap >= M_PI) {
             max_gap_idx_f = i - 1;
             max_gap_idx_s = i;
         }
     }
     
     cout << n << endl << 1 << endl;
+
     for (int i = max_gap_idx_s; i < vec.size(); i++) {
         cout << vec[i].idx << endl;
     }
 
-    for (int i = 1; i < max_gap_idx_f; i++) {
+    for (int i = 1; i <= max_gap_idx_f; i++) {
         cout << vec[i].idx << endl;
     }
 
