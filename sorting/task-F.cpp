@@ -38,6 +38,3 @@ int main() {
     for (string num : nums) cout << num;
     return 0;
 }
-
-// 432
-// 43243

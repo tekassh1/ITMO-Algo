@@ -28,16 +28,6 @@ int main() {
         }
     }
 
-    // (2^19) = 524288
-    // (100000 * 20) * 20 = 4000000
-
-    // for (int i = 0; i < n + 1; i++) {
-    //     for (int j = 0; j < sum / 2 + 1; j++) {
-    //         cout << dp[i][j] << " ";
-    //     }
-    //     cout << endl;
-    // }
-
     for (int j = sum / 2; j >= 0; j--) {
         if (dp[n][j]) {
             cout << sum - 2 * j;

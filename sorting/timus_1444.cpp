@@ -1,4 +1,5 @@
 #define _USE_MATH_DEFINES
+
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -45,6 +46,7 @@ int main() {
         }
         vec.push_back(p);
     }
+    
     sort(vec.begin() + 1, vec.end(), pumpkin_comparator);
     
     int max_gap_idx_f = 0;
