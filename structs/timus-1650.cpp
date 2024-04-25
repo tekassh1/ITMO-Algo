@@ -11,7 +11,7 @@ int main() {
     unordered_map<string, long long> city_sums;                            // city -> city_sum
     map<long long, unordered_set<string>, greater<>> money_sums;           // city_sum -> city
     map<string, int> amounts;                                              // city_name -> amount of max days
-
+    
     int n; cin >> n;
     for (int i = 0; i < n; i++) {
         string name, city;
@@ -38,18 +38,22 @@ int main() {
         }
 
         long long start_city_sum = city_sums[billionaires[name].second];
-        long long start_new_city_sum = start_city_sum - billionaires[name].first;
-
+        
         city_sums[billionaires[name].second] -= billionaires[name].first;       // move net worth to city
-        city_sums[city] += billionaires[name].first;
 
         money_sums[start_city_sum].erase(billionaires[name].second);    // move money_sums to decremented value
         if (money_sums[start_city_sum].size() == 0) money_sums.erase(start_city_sum);
         
+        money_sums[city_sums[city]].erase(city);
+        if (money_sums[city_sums[city]].size() == 0) money_sums.erase(city_sums[city]);
+
+        city_sums[city] += billionaires[name].first;
         long long new_sum_value = city_sums[city];
         money_sums[new_sum_value].insert(city);
 
+        long long start_new_city_sum = start_city_sum - billionaires[name].first;
         money_sums[start_new_city_sum].insert(billionaires[name].second);
+
         billionaires[name].second = city;
         prev_day = day;                 
     }
@@ -60,23 +64,7 @@ int main() {
     }
     
     for (auto& it : amounts) {
-        cout << it.first << " " << it.second << endl;
+        if (it.second != 0)
+            cout << it.first << " " << it.second << endl;
     }
 }
-
-// 5
-// Abramovich ABCD 15
-// Deripaska abcd 10
-// Potanin abcd 5
-// Berezovsky ABCD 2
-// Khodorkovsky Chita 1
-// 25 9
-// 1 Abramovich Anadyr
-// 5 Potanin Courchevel
-// 10 Abramovich abcd
-// 11 Abramovich ABCD
-// 11 Deripaska StPetersburg
-// 15 Potanin Norilsk
-// 20 Berezovsky Tbilisi
-// 21 Potanin StPetersburg
-// 22 Berezovsky ABCD

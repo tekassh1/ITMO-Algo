@@ -42,7 +42,7 @@ int main() {
             prediction.push({rest_entries[car - 1].top(), car});
         }
         else {
-            prediction.push({MAX_ENTR   Y_AM, car});
+            prediction.push({MAX_ENTRY_AM, car});
         }
     }
     cout << actions;
