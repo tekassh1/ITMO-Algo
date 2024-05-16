@@ -11,7 +11,7 @@ int main() {
     unordered_map<string, long long> city_sums;                            // city -> city_sum
     map<long long, unordered_set<string>, greater<>> money_sums;           // city_sum -> city
     map<string, int> amounts;                                              // city_name -> amount of max days
-    
+
     int n; cin >> n;
     for (int i = 0; i < n; i++) {
         string name, city;
@@ -36,7 +36,7 @@ int main() {
             auto elem = money_sums.begin()->second.begin();
             amounts[*elem] += (day - prev_day);                                                                                    
         }
-
+        
         long long start_city_sum = city_sums[billionaires[name].second];
         
         city_sums[billionaires[name].second] -= billionaires[name].first;       // move net worth to city
