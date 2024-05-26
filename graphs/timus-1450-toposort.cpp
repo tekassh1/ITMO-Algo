@@ -8,10 +8,10 @@ using namespace std;
 
 const int INF = 1e9;
 
-typedef struct {
+struct node {
     int to;
     int revenue;
-} node;
+};
 
 typedef vector<vector<node>> links;
 
