@@ -1,6 +1,5 @@
 #include <iostream>
 #include <set>
-#include <type_traits>
 #include <vector>
 
 using namespace std;

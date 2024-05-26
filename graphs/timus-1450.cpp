@@ -11,7 +11,7 @@ const int INF = 1e9;
 typedef struct {
     int to;
     int revenue;
-} node; 
+} node;
 
 int main() {
     int n, m; cin >> n >> m;
